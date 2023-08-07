@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 import '../../../clock_game/home_page.dart';
+import '../../../darkness_game/menu.dart';
 import '../../../flappy_game/flappy_bird_game.dart';
 import '../../../flappy_game/game_over_page.dart';
 import '../../../tetris_game/board.dart';
@@ -93,14 +94,14 @@ class GamesMenu extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const GameBoard(),
+                          builder: (context) => Menu(),
                         ));
                   },
                   child: Container(
                     height: 100,
                     decoration:
                         BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: const Center(child: Text('Tetris Game')),
+                    child: const Center(child: Text('Darknees Game')),
                   ),
                 )),
               ],

@@ -1,12 +1,26 @@
+import 'package:bonfire/bonfire.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'Features/clock_game/score/logic/score_cubit.dart';
 import 'Features/clock_game/settings/logic/settings_cubit.dart';
 import 'Features/clock_game/storage/storage_shared_preferences.dart';
+import 'Features/darkness_game/util/localization/my_localizations_delegate.dart';
+import 'Features/darkness_game/util/sounds.dart';
 import 'Features/games_menu/presentation/views/games_menu.dart';
 
-void main() {
+double tileSize = 32;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb) {
+    await Flame.device.setLandscape();
+    await Flame.device.fullScreen();
+  }
+  await Sounds.initialize();
+
   runApp(
     RepositoryProvider(
       create: (context) => StorageSharedPreferences(),
@@ -24,14 +38,15 @@ void main() {
             lazy: false,
           ),
         ],
-        child: const MyApp(),
+        child: MyApp(),
       ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  MyLocalizationsDelegate myLocation = const MyLocalizationsDelegate();
 
   // This widget is the root of your application.
   @override
@@ -40,6 +55,14 @@ class MyApp extends StatelessWidget {
       title: 'Games',
       debugShowCheckedModeBanner: false,
       home: GamesMenu(),
+      supportedLocales: MyLocalizationsDelegate.supportedLocales(),
+      localizationsDelegates: [
+        myLocation,
+        DefaultCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      localeResolutionCallback: myLocation.resolution,
     );
   }
 }

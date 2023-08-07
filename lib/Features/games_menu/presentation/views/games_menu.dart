@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../clock_game/home_page.dart';
 import '../../../tetris_game/board.dart';
 
 class GamesMenu extends StatelessWidget {
@@ -40,14 +41,14 @@ class GamesMenu extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const GameBoard(),
+                          builder: (context) => const HomePage(),
                         ));
                   },
                   child: Container(
                     height: 100,
                     decoration:
                         BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: const Center(child: Text('Tetris Game')),
+                    child: const Center(child: Text('Clock Game')),
                   ),
                 )),
               ],

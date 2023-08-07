@@ -39,6 +39,8 @@ dependencies:
   intl: any
   lottie: ^2.3.0
   shared_preferences: ^2.0.18
+  flame: ^1.6.0
+  speech_to_text: ^6.1.1
 
 
 dev_dependencies:

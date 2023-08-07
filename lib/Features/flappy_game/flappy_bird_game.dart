@@ -73,7 +73,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
     _timeSinceLastPipeGroup += dt;
-    if (_timeSinceLastPipeGroup > 4.5) {
+    if (_timeSinceLastPipeGroup > 4.0) {
       add(PipeGroup());
       _timeSinceLastPipeGroup = 0;
     }

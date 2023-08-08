@@ -5,21 +5,20 @@ import '../../domain/entites/get_coins/get_coins_entite.dart';
 import '../model/get_coins_model.dart';
 
 abstract class BaseGetCoinsRemoteDataSource {
-  Future<List<GetCoinsEntity>> getCoins();
+  Future<GetCoinsEntity> getCoins();
 }
 
 class GetCoinsRemoteDataSource extends BaseGetCoinsRemoteDataSource {
   @override
-  Future<List<GetCoinsEntity>> getCoins() async {
+  Future<GetCoinsEntity> getCoins() async {
     final response = await DioHelper.getData(
       endPoint: ApiConstant.getGetCoinsEndPoint,
       token: ApiConstant.token,
     );
     if (response.statusCode == 200) {
-      print(response.data);
-      final jsonData = response.data as List<dynamic>;
-      List<GetCoinsEntity> getCoins =
-          jsonData.map((e) => GetCoinsModel.fromJson(e)).toList();
+      print(response.data); //{coins: 1000, gems: 0}
+      final jsonData = response.data;
+      GetCoinsEntity getCoins = GetCoinsModel.fromJson(jsonData);
 
       return getCoins;
     } else {

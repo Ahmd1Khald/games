@@ -10,17 +10,17 @@ class GamesMenuCubit extends Cubit<GamesMenuState> {
 
   static GamesMenuCubit get(context) => BlocProvider.of(context);
 
-  List<GetCoinsEntity>? topicsData;
+  GetCoinsEntity? getCoinsData;
   final GetCoinsUseCase getCoinsUseCase;
 
-  Future<void> fetchGetCoinsList() async {
-    emit(GamesMenuLoadingGetCoinsList());
+  Future<void> fetchCoins() async {
+    emit(GamesMenuLoadingGetCoinsState());
     var result = await getCoinsUseCase.execute();
     result.fold((failure) {
-      emit(GamesMenuErrorGetCoinsList(failure.message));
-    }, (topics) {
-      topicsData = topics;
-      emit(GamesMenuSuccessGetCoinsList(topics));
+      emit(GamesMenuErrorGetCoinsState(failure.message));
+    }, (data) {
+      getCoinsData = data;
+      emit(GamesMenuSuccessGetCoinsState(data));
     });
   }
 }

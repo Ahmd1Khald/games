@@ -14,7 +14,7 @@ class GetCoinsRepository extends BaseGetCoinsRepository {
   });
 
   @override
-  Future<Either<Failure, List<GetCoinsEntity>>> fetchListGetCoins() async {
+  Future<Either<Failure, GetCoinsEntity>> fetchListGetCoins() async {
     try {
       final result = await baseGetCoinsRemoteDataSource.getCoins();
       //print(result);

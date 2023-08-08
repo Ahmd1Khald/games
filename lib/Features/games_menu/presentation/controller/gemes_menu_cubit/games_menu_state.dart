@@ -4,14 +4,14 @@ abstract class GamesMenuState {}
 
 class GamesMenuInitial extends GamesMenuState {}
 
-class GamesMenuLoadingGetCoinsList extends GamesMenuState {}
+class GamesMenuLoadingGetCoinsState extends GamesMenuState {}
 
-class GamesMenuSuccessGetCoinsList extends GamesMenuState {
-  final List<GetCoinsEntity> data;
-  GamesMenuSuccessGetCoinsList(this.data);
+class GamesMenuSuccessGetCoinsState extends GamesMenuState {
+  final GetCoinsEntity data;
+  GamesMenuSuccessGetCoinsState(this.data);
 }
 
-class GamesMenuErrorGetCoinsList extends GamesMenuState {
+class GamesMenuErrorGetCoinsState extends GamesMenuState {
   final String error;
-  GamesMenuErrorGetCoinsList(this.error);
+  GamesMenuErrorGetCoinsState(this.error);
 }

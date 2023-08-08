@@ -10,7 +10,7 @@ import '../../../flappy_game/flappy_bird_game.dart';
 import '../../../flappy_game/game_over_page.dart';
 import '../../../tetris_game/board.dart';
 import '../../data/repository/get_coins_repository.dart';
-import '../../domain/usecase/get_list_topics_usecase.dart';
+import '../../domain/usecase/get_coins_usecase.dart';
 import '../controller/gemes_menu_cubit/gemes_menu_cubit.dart';
 
 class GamesMenu extends StatelessWidget {

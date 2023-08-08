@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entites/get_coins/get_coins_entite.dart';
-import '../../../domain/usecase/get_list_topics_usecase.dart';
+import '../../../domain/usecase/get_coins_usecase.dart';
 
 part 'games_menu_state.dart';
 

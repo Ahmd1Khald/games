@@ -3,10 +3,10 @@ import 'package:games/Features/games_menu/domain/entites/get_coins/get_coins_ent
 
 import '../../../../Core/error/exceptions.dart';
 import '../../../../Core/error/failure.dart';
-import '../../domain/repository/base_get_coins_repository.dart';
+import '../../domain/repository/base_games_repository.dart';
 import '../data_sources/get_coins_remote_data_source.dart';
 
-class GetCoinsRepository extends BaseGetCoinsRepository {
+class GetCoinsRepository extends BaseGamesRepository {
   final BaseGetCoinsRemoteDataSource baseGetCoinsRemoteDataSource;
 
   GetCoinsRepository({

@@ -12,6 +12,10 @@ class GameOverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   //DeviceOrientation.landscapeRight,
+    // ]);
     return const Material(
       color: Colors.black38,
       child: Center(

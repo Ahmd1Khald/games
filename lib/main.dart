@@ -1,4 +1,3 @@
-import 'package:bonfire/bonfire.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +15,10 @@ double tileSize = 32;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
-    await Flame.device.setLandscape();
-    await Flame.device.fullScreen();
+    //await Flame.device.setLandscape();
+    //await Flame.device.fullScreen();
   }
+
   await Sounds.initialize();
 
   runApp(

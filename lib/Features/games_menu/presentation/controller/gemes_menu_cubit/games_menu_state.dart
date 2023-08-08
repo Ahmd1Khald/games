@@ -15,3 +15,15 @@ class GamesMenuErrorGetCoinsState extends GamesMenuState {
   final String error;
   GamesMenuErrorGetCoinsState(this.error);
 }
+
+class GamesMenuLoadingMinusCoinsState extends GamesMenuState {}
+
+class GamesMenuSuccessMinusCoinsState extends GamesMenuState {
+  final MinusCoinsEntity data;
+  GamesMenuSuccessMinusCoinsState(this.data);
+}
+
+class GamesMenuErrorMinusCoinsState extends GamesMenuState {
+  final String error;
+  GamesMenuErrorMinusCoinsState(this.error);
+}

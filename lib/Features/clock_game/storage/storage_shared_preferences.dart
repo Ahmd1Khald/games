@@ -65,7 +65,7 @@ class StorageSharedPreferences extends StorageBase {
     final String result = storage.getString('selectedLanguage') ?? 'en';
     return result;
   }
-  
+
   @override
   Future<void> setSelectedLanguage({required String language}) async {
     final SharedPreferences storage = await _storage;

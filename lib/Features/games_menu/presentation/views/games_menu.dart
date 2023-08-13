@@ -41,7 +41,6 @@ class GamesMenu extends StatelessWidget {
           if (state is GamesMenuSuccessMinusCoinsState) {
             print(state.data);
             //myToast(state: state.data.message, toastState: ToastState.success);
-
             //Navigator.pop(context);
           }
           if (state is GamesMenuLoadingGetCoinsState) {

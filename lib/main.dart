@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -20,12 +20,22 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   setUpServiceLocator();
-  if (!kIsWeb) {
-    //await Flame.device.setLandscape();
-    //await Flame.device.fullScreen();
-  }
+  // if (!kIsWeb) {
+  //   //await Flame.device.setLandscape();
+  //   //await Flame.device.fullScreen();
+  // }
 
   await Sounds.initialize();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
+
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
 
   runApp(
     RepositoryProvider(

@@ -65,6 +65,7 @@ flutter:
   
   assets:
     - assets/
+    - assets/games_menu/
     - assets/images/
     - assets/animations/
     - assets/images/emote/

@@ -2,9 +2,14 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:games/Features/games_menu/domain/usecase/minus_coins_usecase.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/clock_game_widget.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/container_decoration.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/custom_appbar.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/darkness_game_widget.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/flappy_bird_widget.dart';
+import 'package:games/Features/games_menu/presentation/views/widgets/tetris_game_widget.dart';
 
 import '../../../../Core/services/ServiceLocator.dart';
-import '../../../../Core/utiles/widgets/flutter_toast.dart';
 import '../../../clock_game/home_page.dart';
 import '../../../darkness_game/menu.dart';
 import '../../../flappy_game/flappy_bird_game.dart';
@@ -21,6 +26,7 @@ class GamesMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (BuildContext context) => GamesMenuCubit(
         GetCoinsUseCase(getIt.get<GamesRepository>()),
@@ -34,7 +40,7 @@ class GamesMenu extends StatelessWidget {
           }
           if (state is GamesMenuSuccessMinusCoinsState) {
             print(state.data);
-            myToast(state: state.data.message, toastState: ToastState.success);
+            //myToast(state: state.data.message, toastState: ToastState.success);
 
             //Navigator.pop(context);
           }
@@ -48,18 +54,17 @@ class GamesMenu extends StatelessWidget {
         builder: (context, state) {
           GamesMenuCubit cubit = GamesMenuCubit.get(context);
           return Scaffold(
-            appBar: AppBar(
-              title: Text("${cubit.getCoinsData?.coins ?? ""} Coins"),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(20.0),
+            appBar: buildAppBar(cubit),
+            body: Container(
+              decoration: buildBoxDecoration(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                          child: InkWell(
+                      TetrisGameWidget(
                         onTap: () {
                           cubit
                               .minusCoins(count: 10)
@@ -70,46 +75,29 @@ class GamesMenu extends StatelessWidget {
                                     builder: (context) => const GameBoard(),
                                   )));
                         },
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
-                          child: const Center(
-                              child: Text('Tetris Game\n 10 coins')),
-                        ),
-                      )),
-                      const SizedBox(
-                        width: 20,
                       ),
-                      Expanded(
-                          child: InkWell(
-                        onTap: () {
-                          cubit
-                              .minusCoins(count: 10)
-                              .then((value) => cubit.fetchCoins())
-                              .then((value) => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const HomePage(),
-                                  )));
-                        },
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
-                          child: const Center(
-                              child: Text('Clock Game\n 10 coins')),
-                        ),
-                      )),
+                      SizedBox(
+                        width: size.width * 0.05,
+                      ),
+                      ClockGameWidget(onTap: () {
+                        cubit
+                            .minusCoins(count: 10)
+                            .then((value) => cubit.fetchCoins())
+                            .then((value) => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                )));
+                      }),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: size.width * 0.01,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                          child: InkWell(
+                      FlappyBirdGameWidget(
                         onTap: () {
                           cubit
                               .minusCoins(count: 10)
@@ -126,37 +114,20 @@ class GamesMenu extends StatelessWidget {
                                     ),
                                   )));
                         },
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
-                          child: const Center(
-                              child: Text('Flappy Game\n 10 coins')),
-                        ),
-                      )),
-                      const SizedBox(
-                        width: 20,
                       ),
-                      Expanded(
-                          child: InkWell(
-                        onTap: () {
-                          cubit
-                              .minusCoins(count: 10)
-                              .then((value) => cubit.fetchCoins())
-                              .then((value) => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Menu(),
-                                  )));
-                        },
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
-                          child: const Center(
-                              child: Text('Darknees Game\n 10 coins')),
-                        ),
-                      )),
+                      SizedBox(
+                        width: size.width * 0.05,
+                      ),
+                      DarknessGameWidget(onTap: () {
+                        cubit
+                            .minusCoins(count: 10)
+                            .then((value) => cubit.fetchCoins())
+                            .then((value) => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Menu(),
+                                )));
+                      }),
                     ],
                   ),
                 ],

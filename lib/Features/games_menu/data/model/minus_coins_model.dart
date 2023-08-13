@@ -7,6 +7,6 @@ class MinusCoinsModel extends MinusCoinsEntity {
 
   factory MinusCoinsModel.fromJson(Map<String, dynamic> json) =>
       MinusCoinsModel(
-        message: json['message'],
+        message: json['message'] ?? '',
       );
 }

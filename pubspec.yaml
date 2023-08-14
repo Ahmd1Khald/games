@@ -52,6 +52,7 @@ dependencies:
   # dio
   dio:
   fluttertoast:
+  audioplayers:
 
 
 
@@ -79,5 +80,7 @@ flutter:
     - assets/images/items/
     - assets/images/tiled/
     - assets/audio/
+    - assets/audio/video-game-beeps-4_NWM.mp3
+    - assets/audio/video-game-game-over-3_NWM.mp3
     - resources/lang/en.json
     - resources/lang/pt.json

@@ -26,7 +26,7 @@ packages:
     source: hosted
     version: "2.11.0"
   audioplayers:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: audioplayers
       sha256: "61583554386721772f9309f509e17712865b38565a903c761f96b1115a979282"

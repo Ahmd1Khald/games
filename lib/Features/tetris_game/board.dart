@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../flame_audio_test.dart';
 import 'piece.dart';
 import 'pixel.dart';
 import 'values.dart';
@@ -24,10 +27,10 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
-  // 当前方块
   Piece currentPiece = Piece(type: Tetromino.L);
   int currentScore = 0;
   bool gameOver = false;
+  final player = AudioPlayer();
 
   @override
   void initState() {
@@ -36,6 +39,9 @@ class _GameBoardState extends State<GameBoard> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
+    GameWidget(game: AudioGame()..fireOne());
+    //player.play(UrlSource('assets/audio/video-game-beeps-4_NWM.mp3'));
     startGame();
   }
 
@@ -75,6 +81,7 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void showGameOverDialog() {
+    GameWidget(game: AudioGame()..fireTwo());
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -83,10 +90,11 @@ class _GameBoardState extends State<GameBoard> {
         actions: [
           TextButton(
               onPressed: () {
-                resetGame();
+                //resetGame();
+                Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: const Text("Play Again"))
+              child: const Text("End"))
         ],
       ),
     );

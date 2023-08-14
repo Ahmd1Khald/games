@@ -5,6 +5,7 @@ import 'package:games/Features/flappy_game/pipe_group.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
+import '../../flame_audio_test.dart';
 import 'background.dart';
 import 'bird.dart';
 import 'ground.dart';
@@ -25,6 +26,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    GameWidget(game: AudioGame()..fireOne());
     await _initSpeech();
     addAll([
       Background(),

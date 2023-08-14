@@ -1,15 +1,29 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../flame_audio_test.dart';
 import 'flappy_bird_game.dart';
 
-class GameOverPage extends StatelessWidget {
+class GameOverPage extends StatefulWidget {
   final FlappyBirdGame game;
 
   const GameOverPage({
     Key? key,
     required this.game,
   }) : super(key: key);
+
+  @override
+  State<GameOverPage> createState() => _GameOverPageState();
+}
+
+class _GameOverPageState extends State<GameOverPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    GameWidget(game: AudioGame()..fireTwo());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +48,7 @@ class GameOverPage extends StatelessWidget {
                   DeviceOrientation.landscapeLeft,
                   DeviceOrientation.landscapeRight,
                 ]);
-                game.overlays.remove('gameOver');
+                widget.game.overlays.remove('gameOver');
               },
               child: const Text(
                 'End',

@@ -1,11 +1,24 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../flame_audio_test.dart';
 import 'game/game.dart';
 import 'score/score.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    GameWidget(game: AudioGame()..fireOne());
+  }
 
   @override
   Widget build(BuildContext context) {

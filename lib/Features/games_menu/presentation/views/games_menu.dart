@@ -10,6 +10,7 @@ import 'package:games/Features/games_menu/presentation/views/widgets/flappy_bird
 import 'package:games/Features/games_menu/presentation/views/widgets/tetris_game_widget.dart';
 
 import '../../../../Core/services/ServiceLocator.dart';
+import '../../../../Core/utiles/widgets/flutter_toast.dart';
 import '../../../clock_game/home_page.dart';
 import '../../../darkness_game/menu.dart';
 import '../../../flappy_game/flappy_bird_game.dart';
@@ -65,28 +66,40 @@ class GamesMenu extends StatelessWidget {
                     children: [
                       TetrisGameWidget(
                         onTap: () {
-                          cubit
-                              .minusCoins(count: 10)
-                              .then((value) => cubit.fetchCoins())
-                              .then((value) => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const GameBoard(),
-                                  )));
+                          if (cubit.getCoinsData!.coins >= 10) {
+                            cubit
+                                .minusCoins(count: 10)
+                                .then((value) => cubit.fetchCoins())
+                                .then((value) => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const GameBoard(),
+                                    )));
+                          } else {
+                            myToast(
+                                state: "No enough coins",
+                                toastState: ToastState.error);
+                          }
                         },
                       ),
                       SizedBox(
                         width: size.width * 0.05,
                       ),
                       ClockGameWidget(onTap: () {
-                        cubit
-                            .minusCoins(count: 10)
-                            .then((value) => cubit.fetchCoins())
-                            .then((value) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
-                                )));
+                        if (cubit.getCoinsData!.coins >= 10) {
+                          cubit
+                              .minusCoins(count: 10)
+                              .then((value) => cubit.fetchCoins())
+                              .then((value) => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomePage(),
+                                  )));
+                        } else {
+                          myToast(
+                              state: "No enough coins",
+                              toastState: ToastState.error);
+                        }
                       }),
                     ],
                   ),
@@ -98,34 +111,46 @@ class GamesMenu extends StatelessWidget {
                     children: [
                       FlappyBirdGameWidget(
                         onTap: () {
-                          cubit
-                              .minusCoins(count: 10)
-                              .then((value) => cubit.fetchCoins())
-                              .then((value) => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => GameWidget(
-                                      game: game,
-                                      overlayBuilderMap: {
-                                        'gameOver': (context, _) =>
-                                            GameOverPage(game: game),
-                                      },
-                                    ),
-                                  )));
+                          if (cubit.getCoinsData!.coins >= 10) {
+                            cubit
+                                .minusCoins(count: 10)
+                                .then((value) => cubit.fetchCoins())
+                                .then((value) => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GameWidget(
+                                        game: game,
+                                        overlayBuilderMap: {
+                                          'gameOver': (context, _) =>
+                                              GameOverPage(game: game),
+                                        },
+                                      ),
+                                    )));
+                          } else {
+                            myToast(
+                                state: "No enough coins",
+                                toastState: ToastState.error);
+                          }
                         },
                       ),
                       SizedBox(
                         width: size.width * 0.05,
                       ),
                       DarknessGameWidget(onTap: () {
-                        cubit
-                            .minusCoins(count: 10)
-                            .then((value) => cubit.fetchCoins())
-                            .then((value) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Menu(),
-                                )));
+                        if (cubit.getCoinsData!.coins >= 10) {
+                          cubit
+                              .minusCoins(count: 10)
+                              .then((value) => cubit.fetchCoins())
+                              .then((value) => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Menu(),
+                                  )));
+                        } else {
+                          myToast(
+                              state: "No enough coins",
+                              toastState: ToastState.error);
+                        }
                       }),
                     ],
                   ),

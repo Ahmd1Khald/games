@@ -11,7 +11,7 @@ import 'bird.dart';
 import 'ground.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
-  FlappyBirdGame();
+  //FlappyBirdGame();
 
   double speed = 53;
   late Bird _bird;
@@ -39,7 +39,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   Future<void> _initSpeech() async {
     _speechEnabled =
         await _speechToText.initialize(onError: (e) => print('ERROR $e'));
-    _startListening();
+    //_startListening();
   }
 
   void _startListening() async {

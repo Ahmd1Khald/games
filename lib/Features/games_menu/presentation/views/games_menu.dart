@@ -21,9 +21,7 @@ import '../../domain/usecase/get_coins_usecase.dart';
 import '../controller/gemes_menu_cubit/gemes_menu_cubit.dart';
 
 class GamesMenu extends StatelessWidget {
-  GamesMenu({Key? key}) : super(key: key);
-
-  final game = FlappyBirdGame();
+  const GamesMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +109,7 @@ class GamesMenu extends StatelessWidget {
                     children: [
                       FlappyBirdGameWidget(
                         onTap: () {
+                          final game = FlappyBirdGame();
                           if (cubit.getCoinsData!.coins >= 10) {
                             cubit
                                 .minusCoins(count: 10)

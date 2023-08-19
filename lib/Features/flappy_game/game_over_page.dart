@@ -18,11 +18,22 @@ class GameOverPage extends StatefulWidget {
 }
 
 class _GameOverPageState extends State<GameOverPage> {
+  bool click = false;
   @override
   void initState() {
     super.initState();
 
     GameWidget(game: AudioGame()..fireTwo());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    //widget.game.overlays.remove('gameOver');
   }
 
   @override
@@ -44,16 +55,11 @@ class _GameOverPageState extends State<GameOverPage> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                SystemChrome.setPreferredOrientations([
-                  DeviceOrientation.landscapeLeft,
-                  DeviceOrientation.landscapeRight,
-                ]);
-                widget.game.overlays.remove('gameOver');
               },
               child: const Text(
-                'End',
+                'Exit',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                 ),
               ),
             ),

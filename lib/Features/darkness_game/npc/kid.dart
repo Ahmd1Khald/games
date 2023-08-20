@@ -6,7 +6,6 @@ import '../enemies/boss.dart';
 import '../util/custom_sprite_animation_widget.dart';
 import '../util/dialogs.dart';
 import '../util/functions.dart';
-import '../util/localization/strings_location.dart';
 import '../util/npc_sprite_sheet.dart';
 import '../util/player_sprite_sheet.dart';
 import '../util/sounds.dart';
@@ -47,14 +46,24 @@ class Kid extends GameDecoration {
       gameRef.context,
       [
         Say(
-          text: [TextSpan(text: getString('talk_kid_2'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Thank the gods !!! \nYou managed to defeat this horrible creature! Thank you very much! \nI don't even know how to thank you!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: NpcSpriteSheet.kidIdleLeft(),
           ),
           personSayDirection: PersonSayDirection.RIGHT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_player_4'))],
+          text: [
+            const TextSpan(
+              text:
+                  "It was an honor to be able to help you! And don't worry about rewarding me, your father promised me a fortune to rescue you! :-)",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: PlayerSpriteSheet.idleRight(),
           ),

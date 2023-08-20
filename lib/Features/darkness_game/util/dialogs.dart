@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../menu.dart';
-import 'localization/strings_location.dart';
 
 class Dialogs {
   static void showGameOver(BuildContext context, VoidCallback playAgain) {
@@ -26,9 +25,9 @@ class Dialogs {
                       MaterialStateProperty.all(Colors.transparent),
                 ),
                 onPressed: playAgain,
-                child: Text(
-                  getString('play_again_cap'),
-                  style: const TextStyle(
+                child: const Text(
+                  'PLAY AGAIN',
+                  style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Normal',
                       fontSize: 20.0),
@@ -52,9 +51,9 @@ class Dialogs {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                  getString('congratulations'),
-                  style: const TextStyle(
+                const Text(
+                  'CONGRATULATIONS!',
+                  style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Normal',
                       fontSize: 30.0),
@@ -62,11 +61,11 @@ class Dialogs {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 100),
                   child: Text(
-                    getString('thanks'),
-                    style: const TextStyle(
+                    "Thanks for testing the game and feeling the power of Flame and Bonfire in building 2D games.\nMaybe we can have a continuation of the game!\nI hope that you enjoyed!",
+                    style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Normal',
                         fontSize: 18.0),

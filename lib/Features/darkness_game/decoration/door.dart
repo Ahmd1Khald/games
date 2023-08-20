@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import '../../../main.dart';
 import '../player/knight.dart';
 import '../util/game_sprite_sheet.dart';
-import '../util/localization/strings_location.dart';
 
 class Door extends GameDecoration with ObjectCollision {
   bool open = false;
@@ -74,8 +73,8 @@ class Door extends GameDecoration with ObjectCollision {
       [
         Say(
           text: [
-            TextSpan(
-              text: getString('door_without_key'),
+            const TextSpan(
+              text: "I think I need a key to get through here!",
             )
           ],
           person: (gameRef.player as SimplePlayer?)

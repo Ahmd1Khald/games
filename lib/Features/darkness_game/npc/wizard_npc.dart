@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import '../../../main.dart';
 import '../util/custom_sprite_animation_widget.dart';
-import '../util/localization/strings_location.dart';
 import '../util/npc_sprite_sheet.dart';
 import '../util/player_sprite_sheet.dart';
 import '../util/sounds.dart';
@@ -63,7 +62,9 @@ class WizardNPC extends GameDecoration {
       [
         Say(
           text: [
-            TextSpan(text: getString('talk_wizard_1')),
+            const TextSpan(
+              text: "Hello my young knight!\nWhat are you doing here?",
+            ),
           ],
           person: CustomSpriteAnimationWidget(
             animation: NpcSpriteSheet.wizardIdleLeft(),
@@ -71,28 +72,48 @@ class WizardNPC extends GameDecoration {
           personSayDirection: PersonSayDirection.RIGHT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_player_1'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Hello!\nI was sent to rescue a child who was kidnapped by creatures that live in those neighborhoods.",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: PlayerSpriteSheet.idleRight(),
           ),
           personSayDirection: PersonSayDirection.LEFT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_wizard_2'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Humm...\nI don't want to demotivate you, but you are the fifth knight sent for this task. So far, none have returned alive and their bodies are hanging from the walls like trophies.",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: NpcSpriteSheet.wizardIdleLeft(),
           ),
           personSayDirection: PersonSayDirection.RIGHT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_player_2'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Don't worry my old man. Knight like me never existed!\nI will exterminate every creature in this place and rescue the child!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: PlayerSpriteSheet.idleRight(),
           ),
           personSayDirection: PersonSayDirection.LEFT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_wizard_3'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Yes, confidence is what you don't lack!\nThen don't say I didn't warn you!\nGood luck!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: NpcSpriteSheet.wizardIdleLeft(),
           ),

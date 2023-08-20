@@ -9,7 +9,6 @@ import '../util/custom_sprite_animation_widget.dart';
 import '../util/enemy_sprite_sheet.dart';
 import '../util/functions.dart';
 import '../util/game_sprite_sheet.dart';
-import '../util/localization/strings_location.dart';
 import '../util/npc_sprite_sheet.dart';
 import '../util/player_sprite_sheet.dart';
 import '../util/sounds.dart';
@@ -225,28 +224,47 @@ class Boss extends SimpleEnemy with ObjectCollision, UseBarLife {
       gameRef.context,
       [
         Say(
-          text: [TextSpan(text: getString('talk_kid_1'))],
+          text: [
+            const TextSpan(
+              text: "Heeeelp! Heeeelp!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: NpcSpriteSheet.kidIdleLeft(),
           ),
           personSayDirection: PersonSayDirection.RIGHT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_boss_1'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Shut up, you appetizing little creature!\nThe time has come to taste your soft skin! ha ha ha ha",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: EnemySpriteSheet.bossIdleRight(),
           ),
           personSayDirection: PersonSayDirection.LEFT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_player_3'))],
+          text: [
+            const TextSpan(
+              text:
+                  "It won't be your disgusting creature this time!\nYour monstrous days are over!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: PlayerSpriteSheet.idleRight(),
           ),
           personSayDirection: PersonSayDirection.LEFT,
         ),
         Say(
-          text: [TextSpan(text: getString('talk_boss_2'))],
+          text: [
+            const TextSpan(
+              text:
+                  "Look that! Another knight with an inflated ego thinking he can stop me! ha ha ha ha \nCome here!",
+            )
+          ],
           person: CustomSpriteAnimationWidget(
             animation: EnemySpriteSheet.bossIdleRight(),
           ),

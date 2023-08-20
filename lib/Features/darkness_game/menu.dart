@@ -5,7 +5,6 @@ import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:games/Features/darkness_game/util/custom_sprite_animation_widget.dart';
 import 'package:games/Features/darkness_game/util/enemy_sprite_sheet.dart';
-import 'package:games/Features/darkness_game/util/localization/strings_location.dart';
 import 'package:games/Features/darkness_game/util/player_sprite_sheet.dart';
 import 'package:games/Features/darkness_game/util/sounds.dart';
 import 'package:games/Features/darkness_game/widgets/custom_radio.dart';
@@ -82,9 +81,9 @@ class _MenuState extends State<Menu> {
                     ),
                     minimumSize: const Size(100, 40), //////// HERE
                   ),
-                  child: Text(
-                    getString('play_cap'),
-                    style: const TextStyle(
+                  child: const Text(
+                    'PLAY',
+                    style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Normal',
                       fontSize: 17.0,
@@ -148,9 +147,9 @@ class _MenuState extends State<Menu> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(
-                      getString('powered_by'),
-                      style: const TextStyle(
+                    const Text(
+                      'Powered by ',
+                      style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Normal',
                           fontSize: 12.0),
@@ -176,9 +175,9 @@ class _MenuState extends State<Menu> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(
-                      getString('built_with'),
-                      style: const TextStyle(
+                    const Text(
+                      'Built with ',
+                      style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Normal',
                           fontSize: 12.0),
